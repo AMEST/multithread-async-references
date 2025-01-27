@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumOfSwitching", "QuantumOfSwitching\QuantumOfSwitching.csproj", "{82B088EA-B84B-40EE-8174-20AD3A09E8FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPool", "ThreadPool\ThreadPool.csproj", "{8D7A2C42-9B5D-45C2-8089-22AF5882CF5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockFree", "LockFree\LockFree.csproj", "{A3E047F9-FD4A-464A-8091-D236F2EE984B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82B088EA-B84B-40EE-8174-20AD3A09E8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B088EA-B84B-40EE-8174-20AD3A09E8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B088EA-B84B-40EE-8174-20AD3A09E8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B088EA-B84B-40EE-8174-20AD3A09E8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D7A2C42-9B5D-45C2-8089-22AF5882CF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D7A2C42-9B5D-45C2-8089-22AF5882CF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D7A2C42-9B5D-45C2-8089-22AF5882CF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D7A2C42-9B5D-45C2-8089-22AF5882CF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
