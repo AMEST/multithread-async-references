@@ -35,8 +35,13 @@ public class LockFreeQueue<T> : IQueue<T>
             if (next == null)
             {
                 // Если успешно добавлен, обновляем реальный хвост очереди
+                // CompareExchange - атомарно сравнивает значение currentTail.Next с expectedNext (null)
+                // Если значения совпадают, заменяет значение currentTail.Next на newNode (новый узел)
+                // Если значения не совпадают, значение currentTail.Next остается неизмененным
+                // CompareExchange возвращает оригинальное значение, которое было в ref currentTail.Next (и соответственно comparand)
                 if (Interlocked.CompareExchange(ref currentTail.Next, newNode, null) == null)
                 {
+                    // Если успешно добавлен, обновляем реальный хвост очереди. Так же атомарно
                     Interlocked.CompareExchange(ref _tail, newNode, currentTail);
                     return;
                 }
@@ -80,7 +85,12 @@ public class LockFreeQueue<T> : IQueue<T>
             {
                 // Удаляем элемент из очереди и получаем его значение
                 result = next.Value;
+                
                 // Обновляем реальную голову очереди
+                // CompareExchange - атомарно сравнивает значение _head с expectedHead (currentHead)
+                // Если значения совпадают, заменяет значение _head на next (следующий узел)
+                // Если значения не совпадают, значение currentHead остается неизмененным
+                // CompareExchange возвращает оригинальное значение, которое было в ref _head (и соответственно в comparand: currentHead)
                 if (Interlocked.CompareExchange(ref _head, next, currentHead) == currentHead)
                     return true;
             }
