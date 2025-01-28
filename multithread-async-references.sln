@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPool", "ThreadPool\Th
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockFree", "LockFree\LockFree.csproj", "{A3E047F9-FD4A-464A-8091-D236F2EE984B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NMAP", "NMAP\NMAP.csproj", "{50560A5A-D967-4CC8-A16C-54751C1D9614}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3E047F9-FD4A-464A-8091-D236F2EE984B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50560A5A-D967-4CC8-A16C-54751C1D9614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50560A5A-D967-4CC8-A16C-54751C1D9614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50560A5A-D967-4CC8-A16C-54751C1D9614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50560A5A-D967-4CC8-A16C-54751C1D9614}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
