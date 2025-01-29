@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -18,19 +19,18 @@ public class AsyncScanner : IPScanner
             if (pingStatus != IPStatus.Success)
                 return;
 
-            await Parallel.ForEachAsync(ports, options, async (port, _) =>
-            {
-                await CheckPortAsync(ipAddr, port);
-            });
+            await Task.WhenAll(ports.Select(port => CheckPortAsync(ipAddr, port)));
         });
     }
 
     private static async Task<IPStatus> PingAddrAsync(IPAddress ipAddr, int timeout = 3000)
     {
         await Console.Out.WriteLineAsync($"Pinging {ipAddr}");
+        
         using var ping = new Ping();
         var reply = await ping.SendPingAsync(ipAddr, timeout);
         await Console.Out.WriteLineAsync($"Pinged {ipAddr}: {reply.Status}");
+        
         return reply.Status;
     }
 
@@ -39,18 +39,7 @@ public class AsyncScanner : IPScanner
         using var tcpClient = new TcpClient();
         await Console.Out.WriteLineAsync($"Checking {ipAddr}:{port}");
 
-        var connectTask = tcpClient.ConnectWithTimeoutAsync(ipAddr, port, timeout);
-        PortStatus portStatus;
-        try
-        {
-            await connectTask;
-            portStatus = PortStatus.OPEN;
-        }
-        catch
-        {
-            portStatus = PortStatus.CLOSED;
-        }
-
+        var portStatus = await tcpClient.ConnectWithTimeoutAsync(ipAddr, port, timeout);
         await Console.Out.WriteLineAsync($"Checked {ipAddr}:{port} - {portStatus}");
     }
 }

@@ -13,11 +13,24 @@ namespace NMAP
             return connectTask;
         }
 
-		public static async Task<Task> ConnectWithTimeoutAsync(this TcpClient tcpClient, IPAddress ipAddr, int port, int timeout = 3000)
+        public static async Task<PortStatus> ConnectWithTimeoutAsync(this TcpClient tcpClient, IPAddress ipAddr, int port, int timeout = 3000)
         {
             var connectTask = tcpClient.ConnectAsync(ipAddr, port);
+
             await Task.WhenAny(connectTask, Task.Delay(timeout));
-            return connectTask;
+
+            return DecodePortStatus(connectTask);
         }
+
+        private static PortStatus DecodePortStatus(Task connectTask)
+        {
+            return connectTask.Status switch
+            {
+                TaskStatus.RanToCompletion => PortStatus.OPEN,
+                TaskStatus.Faulted => PortStatus.CLOSED,
+                _ => PortStatus.FILTERED
+            };
+        }
+
     }
 }
